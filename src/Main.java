@@ -7,9 +7,17 @@ public class Main {
      * int[] myArray2 = {2,4,6,8,10,12,14,16};
      * zip(myArray1, myArray2) → {1,3,5,7,9,2,4,6,8,10,12,14,16}
      */
-    public static int[] combine(int[] array1, int[] array2) {
+    public static int[] combine(int[] firstarray, int[] secondarray) {
+        int alength = firstarray.length;
+        int[] result = new int[alength+secondarray.length];
+        for (int i = 0; i<alength;i++) {
+            result[i] = firstarray[i];
+        }
+        for (int i = alength;i<secondarray.length + alength;i++) {
+            result[i] = secondarray[i-alength];
+        }
 
-        return null;
+        return result;
 
     }
 
@@ -20,10 +28,21 @@ public class Main {
      * int[] myArray2 = {2,4,6,8,10};
      * zip(myArray1, myArray2) → {1,2,3,4,5,6,7,8,9,10}
      */
-    public static int[] zip(int[] array1, int[] array2) {
-
-        return null;
-
+    public static int[] zip(int[] firstarray, int[] secondarray) {
+        int[] out = new int[secondarray.length+firstarray.length];
+        int one = 0;
+        int two = 0;
+        for (int i = 0; i<secondarray.length+firstarray.length; i++) {
+            if (i%2 == 0) {
+                out[i] = firstarray[one];
+                one = one+1;
+            }
+            else {
+                out[i] = secondarray[two];
+                two = two+1;
+            }
+        }
+        return out;
     }
 
     /**
@@ -33,9 +52,12 @@ public class Main {
      * int[] myArray2 = {2,4,6,8,10};=
      * product(myArray1, myArray2) → {2,12,30,56,90}
      */
-    public static int[] product(int[] array1, int[] array2) {
-
-        return null;
+    public static int[] product(int[] firstarray, int[] secodnarray) {
+        int[] out = new int[firstarray.length];
+        for (int i = 0; i<firstarray.length;i++) {
+            out[i] = firstarray[i]*secodnarray[i];
+        }
+        return out;
 
     }
 
@@ -56,14 +78,26 @@ public class Main {
      * capitalCount(words) → {1, 2, 2, 0}
      */
     public static int[] capitalCount(String[] words) {
+        int[] count = new int[words.length];
+        for (int i = 0; i< words.length; i++) {
+            count[i] = countCapitalLetters(words[i]);
+        }
 
-        return null;
+        return count;
 
     }
 
-    public static int countCapitalLetters(String word) {
+    public static int countCapitalLetters(String Words) {
+        int counter = 0;
+        for (int x = 0; x<Words.length();x++) {
+            char c = Words.charAt(x);
+            int a = c;
+            if (a>64&&a<91) {
+                counter = counter + 1;
+            }
+        }
 
-        return 0;
+        return counter;
 
     }
 
